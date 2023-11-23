@@ -81,7 +81,6 @@ local plugins = {
 		"mhartington/formatter.nvim",
 		lazy = false,
 		config = function()
-			print("running formatter config")
 			require("formatter").setup({
 				filetype = {
 					typescript = {
@@ -111,6 +110,9 @@ local plugins = {
 					lua = {
 						require("formatter.filetypes.lua").stylua,
 					},
+                    rust = {
+                        require("formatter.filetypes.rust").rustfmt,
+                    },
 				},
 			})
 		end,

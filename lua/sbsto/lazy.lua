@@ -89,6 +89,9 @@ local plugins = {
 					typescriptreact = {
 						require("formatter.filetypes.typescriptreact").prettier,
 					},
+                    svelte = {
+                        require("formatter.filetypes.svelte").prettier,
+                    },
 					javascript = {
 						require("formatter.filetypes.javascript").prettier,
 					},

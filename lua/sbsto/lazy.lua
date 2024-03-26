@@ -95,30 +95,37 @@ local plugins = {
 					javascript = {
 						require("formatter.filetypes.javascript").prettier,
 					},
-                    javascriptreact = {
-                        require("formatter.filetypes.javascriptreact").prettier,
-                    },
-                    css = {
-                        require("formatter.filetypes.css").prettier,
-                    },
-                    html = {
-                        require("formatter.filetypes.html").prettier,
-                    },
-                    yaml = {
-                        require("formatter.filetypes.yaml").prettier,
-                    },
-                    json = {
-                        require("formatter.filetypes.json").prettier,
-                    },
+					javascriptreact = {
+						require("formatter.filetypes.javascriptreact").prettier,
+					},
+					css = {
+						require("formatter.filetypes.css").prettier,
+					},
+					html = {
+						require("formatter.filetypes.html").prettier,
+					},
+					yaml = {
+						require("formatter.filetypes.yaml").prettier,
+					},
+					json = {
+						require("formatter.filetypes.json").prettier,
+					},
 					lua = {
 						require("formatter.filetypes.lua").stylua,
 					},
-                    rust = {
-                        require("formatter.filetypes.rust").rustfmt,
-                    },
+					rust = {
+						require("formatter.filetypes.rust").rustfmt,
+					},
 				},
 			})
 		end,
+	},
+	{
+		"numToStr/Comment.nvim",
+		opts = {
+			-- add any options here
+		},
+		lazy = false,
 	},
 }
 

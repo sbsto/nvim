@@ -11,6 +11,17 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+
+local function select_formatter(filetype)
+  if vim.fn.filereadable(vim.fn.getcwd() .. '/biome.json') == 1 then
+    -- Return the Biome formatter if biome.json exists
+    return require("formatter.filetypes." .. filetype).biome
+  else
+    -- Return the Prettier formatter if biome.json doesn't exist
+    return require("formatter.filetypes." .. filetype).prettier
+  end
+end
+
 local plugins = {
 	{
 		"nvim-telescope/telescope.nvim",
@@ -83,33 +94,15 @@ local plugins = {
 		config = function()
 			require("formatter").setup({
 				filetype = {
-					typescript = {
-						require("formatter.filetypes.typescript").prettier,
-					},
-					typescriptreact = {
-						require("formatter.filetypes.typescriptreact").prettier,
-					},
-                    svelte = {
-                        require("formatter.filetypes.svelte").prettier,
-                    },
-					javascript = {
-						require("formatter.filetypes.javascript").prettier,
-					},
-					javascriptreact = {
-						require("formatter.filetypes.javascriptreact").prettier,
-					},
-					css = {
-						require("formatter.filetypes.css").prettier,
-					},
-					html = {
-						require("formatter.filetypes.html").prettier,
-					},
-					yaml = {
-						require("formatter.filetypes.yaml").prettier,
-					},
-					json = {
-						require("formatter.filetypes.json").prettier,
-					},
+					typescript = select_formatter("typescript"),
+					typescriptreact = select_formatter("typescriptreact"),
+                    svelte = select_formatter("svelte"),
+					javascript = select_formatter("javascript"),
+					javascriptreact = select_formatter("javascriptreact"),
+					css = select_formatter("css"),
+					html = select_formatter("html"),
+					yaml = select_formatter("yaml"),
+					json = select_formatter("json"),
 					lua = {
 						require("formatter.filetypes.lua").stylua,
 					},

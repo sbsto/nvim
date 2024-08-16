@@ -13,14 +13,13 @@ local options = {
         update_root = false,
     },
     view = {
-        adaptive_size = false,
+        adaptive_size = true,
         side = "left",
         width = 30,
         preserve_window_proportions = true,
     },
     git = {
-        enable = false,
-        ignore = true,
+        enable = true,
     },
     filesystem_watchers = {
         enable = true,
@@ -32,7 +31,7 @@ local options = {
     },
     renderer = {
         root_folder_label = false,
-        highlight_git = false,
+        highlight_git = true,
         highlight_opened_files = "none",
 
         indent_markers = {

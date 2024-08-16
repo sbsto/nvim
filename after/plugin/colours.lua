@@ -1,4 +1,4 @@
 function Color(color)
-	color = color or "rose-pine"
+	color = color or "tokyo-night"
 	vim.cmd.colorscheme(color)
 end

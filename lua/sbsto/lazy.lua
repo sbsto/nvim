@@ -11,15 +11,12 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-
 local function select_formatter(filetype)
-  if vim.fn.filereadable(vim.fn.getcwd() .. '/biome.json') == 1 then
-    -- Return the Biome formatter if biome.json exists
-    return require("formatter.filetypes." .. filetype).biome
-  else
-    -- Return the Prettier formatter if biome.json doesn't exist
-    return require("formatter.filetypes." .. filetype).prettier
-  end
+	if vim.fn.filereadable(vim.fn.getcwd() .. "/biome.json") == 1 then
+		return require("formatter.filetypes." .. filetype).biome
+	else
+		return require("formatter.filetypes." .. filetype).prettier
+	end
 end
 
 local plugins = {
@@ -29,10 +26,13 @@ local plugins = {
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
 	{
-		"rose-pine/neovim",
-		as = "rose-pine",
+		"folke/tokyonight.nvim",
+		lazy = false,
+		priority = 1000,
+		opts = {},
 		config = function()
-			vim.cmd("colorscheme rose-pine")
+			require("tokyonight").setup({ transparency = true })
+			vim.cmd("colorscheme tokyonight")
 		end,
 	},
 	{
@@ -41,9 +41,6 @@ local plugins = {
 	},
 	{
 		"nvim-treesitter/playground",
-	},
-	{
-		"theprimeagen/harpoon",
 	},
 	{ "VonHeikemen/lsp-zero.nvim", branch = "v3.x" },
 	{ "neovim/nvim-lspconfig" },
@@ -96,7 +93,7 @@ local plugins = {
 				filetype = {
 					typescript = select_formatter("typescript"),
 					typescriptreact = select_formatter("typescriptreact"),
-                    svelte = select_formatter("svelte"),
+					svelte = select_formatter("svelte"),
 					javascript = select_formatter("javascript"),
 					javascriptreact = select_formatter("javascriptreact"),
 					css = select_formatter("css"),

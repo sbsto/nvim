@@ -1,12 +1,21 @@
-local builtin = require('telescope.builtin')
+local builtin = require("telescope.builtin")
 
-function config()
-  builtin.live_grep({
-    additional_args = function(opts)
-      return { "--hidden", "--glob", "!.git/*" }
-    end
-  })
+local find_files_config = function()
+	builtin.find_files({
+		hidden = true,
+		no_ignore = false,
+		file_ignore_patterns = { ".git/" },
+	})
 end
 
-vim.keymap.set('n', '<leader>ff', config, {})
-vim.keymap.set('n', '<leader>fw', config, {})
+local live_grep_config = function()
+	builtin.live_grep({
+		additional_args = function(_)
+			return { "--hidden", "--glob", "!.git/*" }
+		end,
+	})
+end
+
+-- Set keybindings
+vim.keymap.set("n", "<leader>ff", find_files_config, {})
+vim.keymap.set("n", "<leader>fw", live_grep_config, {})

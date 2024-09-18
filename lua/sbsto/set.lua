@@ -7,7 +7,6 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
 vim.opt.smartindent = true
-
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
@@ -29,22 +28,39 @@ vim.opt.fillchars = { eob = " " }
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
-vim.api.nvim_set_hl(0, "Pmenu", { bg = "none" })
-vim.api.nvim_set_hl(0, "Terminal", { bg = "none" })
-vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
-vim.api.nvim_set_hl(0, "FoldColumn", { bg = "none" })
-vim.api.nvim_set_hl(0, "Folded", { bg = "none" })
-vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
-vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
-vim.api.nvim_set_hl(0, "WhichKeyFloat", { bg = "none" })
-vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = "none" })
-vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "none" })
-vim.api.nvim_set_hl(0, "TelescopePromptBorder", { bg = "none" })
-vim.api.nvim_set_hl(0, "TelescopePromptTitle", { bg = "none" })
-vim.api.nvim_set_hl(0, "NvimTreeNormal", { bg = "none" })
-vim.api.nvim_set_hl(0, "NvimTreeNormalNC", { bg = "none" })
-vim.api.nvim_set_hl(0, "NvimTreeEndOfBuffer", { bg = "none" })
-vim.api.nvim_set_hl(0, "NvimTreeVertSplit", { bg = "none" })
+local function set_transparent_bg(group)
+	vim.api.nvim_set_hl(0, group, { bg = "none" })
+end
+
+local transparent_groups = {
+	"NormalFloat",
+	"FloatBorder",
+	"Pmenu",
+	"Terminal",
+	"EndOfBuffer",
+	"FoldColumn",
+	"Folded",
+	"SignColumn",
+	"NormalNC",
+	"WhichKeyFloat",
+	"TelescopeBorder",
+	"TelescopeNormal",
+	"TelescopePromptBorder",
+	"TelescopePromptTitle",
+	"NvimTreeNormal",
+	"NvimTreeNormalNC",
+	"NvimTreeEndOfBuffer",
+	"NvimTreeVertSplit",
+	"Normal",
+}
+
+vim.api.nvim_set_hl(0, "NvimTreeWinSeparator", { bg = "none", fg = "none" })
+
+for _, group in ipairs(transparent_groups) do
+	set_transparent_bg(group)
+end
+
+
+local statusline_hl = vim.api.nvim_get_hl_by_name("StatusLine", true)
+local bg_color = statusline_hl.background and string.format("#%06x", statusline_hl.background) or "NONE"
+vim.api.nvim_set_hl(0, "MsgArea", { bg = bg_color })

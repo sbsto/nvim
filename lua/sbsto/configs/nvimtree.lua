@@ -33,11 +33,9 @@ local options = {
         root_folder_label = false,
         highlight_git = true,
         highlight_opened_files = "none",
-
         indent_markers = {
             enable = false,
         },
-
         icons = {
             show = {
                 file = true,
@@ -45,7 +43,6 @@ local options = {
                 folder_arrow = true,
                 git = false,
             },
-
             glyphs = {
                 default = "󰈚",
                 symlink = "",

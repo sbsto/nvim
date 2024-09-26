@@ -164,20 +164,22 @@ local plugins = {
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
+            local theme = require('lualine.themes.seoul256');
+            theme.normal.b.bg = 'none'
+            theme.normal.c.bg = 'none'
 			require("lualine").setup({
 				options = {
 					icons_enabled = true,
-					theme = require('lualine.themes.seoul256'),
-					component_separators = { left = "", right = "" },
-					section_separators = { left = "", right = "" },
+					theme = theme,
+					component_separators = { left = " ", right = " " },
+					section_separators = { left = " ", right = " " },
 					disabled_filetypes = {
 						statusline = {},
 						winbar = {},
 					},
 					ignore_focus = {},
 					always_divide_middle = true,
-					globalstatus = false,
-					refresh = {
+					globalstatus = false, refresh = {
 						statusline = 1000,
 						tabline = 1000,
 						winbar = 1000,
@@ -187,7 +189,7 @@ local plugins = {
 					lualine_a = { "mode" },
 					lualine_b = { "branch", "diff", "diagnostics" },
 					lualine_c = { "filename" },
-					lualine_x = { "encoding", "fileformat", "filetype" },
+					lualine_x = { "filetype" },
 					lualine_y = { "progress" },
 					lualine_z = { "location" },
 				},

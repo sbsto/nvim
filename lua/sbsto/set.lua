@@ -1,9 +1,9 @@
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 
 vim.opt.smartindent = true
@@ -50,8 +50,12 @@ local transparent_groups = {
 	"NvimTreeNormal",
 	"NvimTreeNormalNC",
 	"NvimTreeEndOfBuffer",
-	"NvimTreeVertSplit",
 	"Normal",
+	"StatusLineNC",
+	"StatusLine",
+	"StatusLineTermNC",
+	"StatusLineTerm",
+  "VertSplit",
 }
 
 vim.api.nvim_set_hl(0, "NvimTreeWinSeparator", { bg = "none", fg = "none" })
@@ -59,8 +63,3 @@ vim.api.nvim_set_hl(0, "NvimTreeWinSeparator", { bg = "none", fg = "none" })
 for _, group in ipairs(transparent_groups) do
 	set_transparent_bg(group)
 end
-
-
-local statusline_hl = vim.api.nvim_get_hl_by_name("StatusLine", true)
-local bg_color = statusline_hl.background and string.format("#%06x", statusline_hl.background) or "NONE"
-vim.api.nvim_set_hl(0, "MsgArea", { bg = bg_color })

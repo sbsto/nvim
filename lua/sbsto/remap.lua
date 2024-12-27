@@ -45,5 +45,5 @@ vim.keymap.set("n", "L", function() vim.diagnostic.open_float(nil, {scope="line"
 -- Previous buffer
 vim.keymap.set("n", "<leader>p", ":bp<CR>", { noremap = true, silent = true })
 
--- open netrw
-vim.keymap.set("n", "<leader>e", ":Explore<CR>", { noremap = true, silent = true })
+-- open file explorer 
+vim.keymap.set("n", "<leader>e", ":Oil<CR>", { noremap = true, silent = true })

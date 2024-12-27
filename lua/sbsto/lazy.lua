@@ -50,11 +50,15 @@ local plugins = {
 	-- Snippets
 	{ "rafamadriz/friendly-snippets" },
 
-	  {
-	    'stevearc/oil.nvim',
-	    opts = {},
-	    dependencies = { { "echasnovski/mini.icons", opts = {} } },
-	  },
+	{
+		"stevearc/oil.nvim",
+		opts = {
+			view_options = {
+				show_hidden = true,
+			},
+		},
+		dependencies = { { "echasnovski/mini.icons", opts = {} } },
+	},
 
 	-- Supermaven
 	{
@@ -90,12 +94,12 @@ local plugins = {
 					rust = {
 						require("formatter.filetypes.rust").rustfmt,
 					},
-          go = {
-            require("formatter.filetypes.go").gofumpt,
-          },
-          nix = {
-            require("formatter.filetypes.nix").nixpkgs_fmt,
-          },
+					go = {
+						require("formatter.filetypes.go").gofumpt,
+					},
+					nix = {
+						require("formatter.filetypes.nix").nixpkgs_fmt,
+					},
 				},
 			})
 		end,

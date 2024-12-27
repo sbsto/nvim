@@ -5,7 +5,7 @@ if not vim.loop.fs_stat(lazypath) then
 		"clone",
 		"--filter=blob:none",
 		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable", -- latest stable release
+		"--branch=stable",
 		lazypath,
 	})
 end
@@ -21,19 +21,12 @@ end
 
 local plugins = {
 	{
+		"shaunsingh/seoul256.nvim",
+	},
+	{
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.4",
 		dependencies = { "nvim-lua/plenary.nvim" },
-	},
-	{
-		"folke/tokyonight.nvim",
-		lazy = false,
-		priority = 1000,
-		opts = {},
-		config = function()
-			require("tokyonight").setup({ transparency = true })
-			vim.cmd("colorscheme tokyonight")
-		end,
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -57,15 +50,21 @@ local plugins = {
 	-- Snippets
 	{ "rafamadriz/friendly-snippets" },
 
-	-- Copilot
-	{ "github/copilot.vim" },
+	  {
+	    'stevearc/oil.nvim',
+	    opts = {},
+	    dependencies = { { "echasnovski/mini.icons", opts = {} } },
+	  },
 
-  {
-    'stevearc/oil.nvim',
-    opts = {},
-    dependencies = { { "echasnovski/mini.icons", opts = {} } },
-  },
+	-- Supermaven
+	{
+		"supermaven-inc/supermaven-nvim",
+		config = function()
+			require("supermaven-nvim").setup({})
+		end,
+	},
 
+	-- formatter
 	{
 		"mhartington/formatter.nvim",
 		lazy = false,
@@ -82,6 +81,9 @@ local plugins = {
 					html = select_formatter("html"),
 					yaml = select_formatter("yaml"),
 					json = select_formatter("json"),
+					ocaml = {
+						require("formatter.filetypes.ocaml").ocamlformat,
+					},
 					lua = {
 						require("formatter.filetypes.lua").stylua,
 					},
@@ -100,18 +102,16 @@ local plugins = {
 	},
 	{
 		"numToStr/Comment.nvim",
-		opts = {
-			-- add any options here
-		},
+		opts = {},
 		lazy = false,
 	},
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
-            local theme = require('lualine.themes.seoul256');
-            theme.normal.b.bg = 'none'
-            theme.normal.c.bg = 'none'
+			local theme = require("lualine.themes.seoul256")
+			theme.normal.b.bg = "none"
+			theme.normal.c.bg = "none"
 			require("lualine").setup({
 				options = {
 					icons_enabled = true,
@@ -124,7 +124,8 @@ local plugins = {
 					},
 					ignore_focus = {},
 					always_divide_middle = true,
-					globalstatus = false, refresh = {
+					globalstatus = false,
+					refresh = {
 						statusline = 1000,
 						tabline = 1000,
 						winbar = 1000,

@@ -25,9 +25,6 @@ vim.opt.updatetime = 50
 
 vim.opt.fillchars = { eob = " " }
 
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-
 local function set_transparent_bg(group)
 	vim.api.nvim_set_hl(0, group, { bg = "none" })
 end
@@ -47,9 +44,6 @@ local transparent_groups = {
 	"TelescopeNormal",
 	"TelescopePromptBorder",
 	"TelescopePromptTitle",
-	"NvimTreeNormal",
-	"NvimTreeNormalNC",
-	"NvimTreeEndOfBuffer",
 	"Normal",
 	"StatusLineNC",
 	"StatusLine",
@@ -57,8 +51,6 @@ local transparent_groups = {
 	"StatusLineTerm",
   "VertSplit",
 }
-
-vim.api.nvim_set_hl(0, "NvimTreeWinSeparator", { bg = "none", fg = "none" })
 
 for _, group in ipairs(transparent_groups) do
 	set_transparent_bg(group)

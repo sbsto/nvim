@@ -24,8 +24,8 @@ vim.keymap.set("v", "x", '"+x') -- Cut in visual mode
 vim.keymap.set("n", "p", '"+p') -- Paste in normal mode
 vim.keymap.set("v", "p", '"+p') -- Paste in visual mode
 
-vim.keymap.set('n', 'd', '"+d')
-vim.keymap.set('v', 'd', '"+d')
+vim.keymap.set("n", "d", '"+d')
+vim.keymap.set("v", "d", '"+d')
 
 -- Copy whole file
 vim.keymap.set("n", "<C-c>", ":%y+<CR>")
@@ -40,10 +40,20 @@ vim.keymap.set("n", "<C-k>", "<C-w>k", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { noremap = true, silent = true })
 
 -- Floating diagnostics
-vim.keymap.set("n", "L", function() vim.diagnostic.open_float(nil, {scope="line"}) end, { noremap = true, silent = true })
+vim.keymap.set("n", "L", function()
+	vim.diagnostic.open_float(nil, { scope = "line" })
+end, { noremap = true, silent = true })
 
 -- Previous buffer
 vim.keymap.set("n", "<leader>p", ":bp<CR>", { noremap = true, silent = true })
 
--- open file explorer 
+-- open file explorer
 vim.keymap.set("n", "<leader>e", ":Oil<CR>", { noremap = true, silent = true })
+
+-- copy commit URL
+vim.keymap.set("n", "<leader>cb", ":GitBlameOpenFileURL<CR>", { noremap = true, silent = true })
+vim.keymap.set("v", "<leader>cb", ":GitBlameOpenFileURL<CR>", { noremap = true, silent = true })
+
+-- open commit in browser
+vim.keymap.set("n", "<leader>cc", ":GitBlameCopyFileURL<CR>", { noremap = true, silent = true })
+vim.keymap.set("v", "<leader>cc", ":GitBlameCopyFileURL<CR>", { noremap = true, silent = true })

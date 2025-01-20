@@ -60,6 +60,16 @@ local plugins = {
 		dependencies = { { "echasnovski/mini.icons", opts = {} } },
 	},
 
+	{
+		"f-person/git-blame.nvim",
+		event = "VeryLazy",
+		opts = {
+			enabled = true,
+			message_template = " <summary> • <date> • <author> • <sha>",
+			date_format = "%m-%d-%Y",
+		},
+	},
+
 	-- Supermaven
 	{
 		"supermaven-inc/supermaven-nvim",
@@ -111,11 +121,15 @@ local plugins = {
 	},
 	{
 		"nvim-lualine/lualine.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
+		dependencies = { "nvim-tree/nvim-web-devicons", "f-person/git-blame.nvim" },
 		config = function()
+			vim.g.gitblame_display_virtual_text = 0
+			local git_blame = require("gitblame")
+
 			local theme = require("lualine.themes.seoul256")
 			theme.normal.b.bg = "none"
 			theme.normal.c.bg = "none"
+
 			require("lualine").setup({
 				options = {
 					icons_enabled = true,
@@ -138,7 +152,10 @@ local plugins = {
 				sections = {
 					lualine_a = { "mode" },
 					lualine_b = { "branch", "diff", "diagnostics" },
-					lualine_c = { "filename" },
+					lualine_c = {
+						"filename",
+						{ git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available },
+					},
 					lualine_x = { "filetype" },
 					lualine_y = { "progress" },
 					lualine_z = { "location" },

@@ -11,7 +11,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-local function select_formatter(filetype)
+local function select_js_formatter(filetype)
 	if vim.fn.filereadable(vim.fn.getcwd() .. "/biome.json") == 1 then
 		return require("formatter.filetypes." .. filetype).biome
 	else
@@ -69,8 +69,6 @@ local plugins = {
 			date_format = "%m-%d-%Y",
 		},
 	},
-
-	-- Supermaven
 	{
 		"supermaven-inc/supermaven-nvim",
 		config = function()
@@ -85,16 +83,16 @@ local plugins = {
 		config = function()
 			require("formatter").setup({
 				filetype = {
-					typescript = select_formatter("typescript"),
-					typescriptreact = select_formatter("typescriptreact"),
+					typescript = select_js_formatter("typescript"),
+					typescriptreact = select_js_formatter("typescriptreact"),
 
-					svelte = select_formatter("svelte"),
-					javascript = select_formatter("javascript"),
-					javascriptreact = select_formatter("javascriptreact"),
-					css = select_formatter("css"),
-					html = select_formatter("html"),
-					yaml = select_formatter("yaml"),
-					json = select_formatter("json"),
+					svelte = select_js_formatter("svelte"),
+					javascript = select_js_formatter("javascript"),
+					javascriptreact = select_js_formatter("javascriptreact"),
+					css = select_js_formatter("css"),
+					html = select_js_formatter("html"),
+					yaml = select_js_formatter("yaml"),
+					json = select_js_formatter("json"),
 					ocaml = {
 						require("formatter.filetypes.ocaml").ocamlformat,
 					},

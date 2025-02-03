@@ -29,6 +29,22 @@ local plugins = {
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
 	{
+		"nvim-telescope/telescope-ui-select.nvim",
+		-- install the latest stable version
+		version = "*",
+		config = function()
+			require("telescope").load_extension("ui-select")
+		end,
+	},
+	{
+		"nvim-telescope/telescope-frecency.nvim",
+		-- install the latest stable version
+		version = "*",
+		config = function()
+			require("telescope").load_extension("frecency")
+		end,
+	},
+	{
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
 	},
@@ -107,7 +123,7 @@ local plugins = {
 					},
 					nix = {
 						require("formatter.filetypes.nix").nixpkgs_fmt,
-					},
+					}
 				},
 			})
 		end,

@@ -123,7 +123,7 @@ local plugins = {
 					},
 					nix = {
 						require("formatter.filetypes.nix").nixpkgs_fmt,
-					}
+					},
 				},
 			})
 		end,
@@ -188,6 +188,12 @@ local plugins = {
 				extensions = {},
 			})
 		end,
+	},
+	{
+		"nvim-neorg/neorg",
+		lazy = false,
+		version = "*",
+		config = true,
 	},
 }
 

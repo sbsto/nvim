@@ -1,4 +1,5 @@
 vim.g.mapleader = " "
+vim.g.maplocalleader = ","
 
 -- Global key mappings
 
@@ -10,7 +11,6 @@ vim.keymap.set("n", "J", "mzJ`z")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
--- Go to next occurence of something
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
@@ -23,9 +23,6 @@ vim.keymap.set("v", "x", '"+x') -- Cut in visual mode
 
 vim.keymap.set("n", "p", '"+p') -- Paste in normal mode
 vim.keymap.set("v", "p", '"+p') -- Paste in visual mode
-
-vim.keymap.set("n", "d", '"+d')
-vim.keymap.set("v", "d", '"+d')
 
 -- Copy whole file
 vim.keymap.set("n", "<C-c>", ":%y+<CR>")

@@ -9,7 +9,8 @@ require("nvim-treesitter.configs").setup({
 		"svelte",
 		"html",
 		"css",
-    "norg",
+    "markdown",
+    "markdown_inline",
 	},
 
 	sync_install = false,

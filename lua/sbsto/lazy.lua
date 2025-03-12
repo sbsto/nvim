@@ -189,12 +189,6 @@ local plugins = {
 			})
 		end,
 	},
-	{
-		"nvim-neorg/neorg",
-		lazy = false,
-		version = "*",
-		config = true,
-	},
 }
 
 require("lazy").setup(plugins)

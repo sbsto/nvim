@@ -2,7 +2,6 @@ local lsp = require("lsp-zero")
 
 lsp.preset("recommended")
 
--- Fix Undefined global 'vim'
 lsp.configure("lua_ls", {
 	settings = {
 		Lua = {
@@ -59,8 +58,26 @@ require("lspconfig").ts_ls.setup({})
 
 require("mason").setup({})
 require("mason-lspconfig").setup({
-	ensure_installed = { "ts_ls", "eslint" },
-	handlers = {
-		lsp.default_setup,
-	},
+  ensure_installed = {
+    "lua_ls",
+    "rust_analyzer",
+    "svelte",
+    "ts_ls",
+    "tailwindcss",
+    "eslint",
+    "biome",
+    "bashls",
+  },
+  handlers = {
+    lsp.default_setup,
+  },
+})
+require("mason-tool-installer").setup({
+  ensure_installed = {
+    "biome",
+    "eslint",
+    "prettierd",
+    "stylua",
+    "shfmt",
+  }
 })

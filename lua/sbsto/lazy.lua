@@ -225,14 +225,10 @@ local plugins = {
 					},
 				},
 			},
-			{
-				"MeanderingProgrammer/render-markdown.nvim",
-				opts = {
-					file_types = { "markdown", "Avante" },
-				},
-				ft = { "markdown", "Avante" },
-			},
 		},
+	},
+	{
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
 	},
 }
 

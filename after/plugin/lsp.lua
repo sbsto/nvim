@@ -67,6 +67,7 @@ require("mason-lspconfig").setup({
     "eslint",
     "biome",
     "bashls",
+    "jsonls",
   },
   handlers = {
     lsp.default_setup,
@@ -76,7 +77,7 @@ require("mason-tool-installer").setup({
   ensure_installed = {
     "biome",
     "eslint",
-    "prettierd",
+    "prettier",
     "stylua",
     "shfmt",
   }

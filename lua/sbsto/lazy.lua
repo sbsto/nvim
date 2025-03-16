@@ -12,53 +12,10 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local function select_js_formatter(filetype)
-	local buffer_dir = vim.fn.expand("%:p:h")
-	local root_dir = vim.fn.getcwd()
-
-	local function find_config_in_ancestor(dir, filename)
-		local current = dir
-		while current and current ~= "" do
-			if vim.fn.filereadable(current .. "/" .. filename) == 1 then
-				return current .. "/" .. filename
-			end
-			local parent = vim.fn.fnamemodify(current, ":h")
-			if parent == current then
-				break
-			end
-			current = parent
-		end
-		return nil
-	end
-
-	local biome_path = find_config_in_ancestor(buffer_dir, "biome.json")
-	local prettier_path = find_config_in_ancestor(buffer_dir, ".prettierrc")
-		or find_config_in_ancestor(buffer_dir, ".prettierrc.json")
-		or find_config_in_ancestor(buffer_dir, ".prettierrc.js")
-
-	if not biome_path then
-		biome_path = find_config_in_ancestor(root_dir, "biome.json")
-	end
-
-	if not prettier_path then
-		prettier_path = find_config_in_ancestor(root_dir, ".prettierrc")
-			or find_config_in_ancestor(root_dir, ".prettierrc.json")
-			or find_config_in_ancestor(root_dir, ".prettierrc.js")
-	end
-
-	if biome_path and (not prettier_path or vim.fn.fnamemodify(biome_path, ":h") == buffer_dir) then
-		return function()
-			local config = require("formatter.filetypes." .. filetype).biome()[1]
-			config.cwd = vim.fn.fnamemodify(biome_path, ":h")
-			return config
-		end
-	elseif prettier_path then
-		return function()
-			local config = require("formatter.filetypes." .. filetype).prettier()[1]
-			config.cwd = vim.fn.fnamemodify(prettier_path, ":h")
-			return config
-		end
-	else
+	if vim.fn.filereadable(vim.fn.getcwd() .. "/biome.json") == 1 then
 		return require("formatter.filetypes." .. filetype).biome
+	else
+		return require("formatter.filetypes." .. filetype).prettier
 	end
 end
 

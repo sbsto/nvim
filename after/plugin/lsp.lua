@@ -80,5 +80,6 @@ require("mason-tool-installer").setup({
     "prettier",
     "stylua",
     "shfmt",
+    "swiftlint",
   }
 })

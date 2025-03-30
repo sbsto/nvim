@@ -2,6 +2,8 @@ require("nvim-treesitter.configs").setup({
 	ensure_installed = {
 		"javascript",
 		"typescript",
+    "terraform",
+    "hcl",
 		"rust",
 		"lua",
 		"vim",

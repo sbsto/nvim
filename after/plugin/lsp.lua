@@ -68,6 +68,8 @@ require("mason-lspconfig").setup({
     "biome",
     "bashls",
     "jsonls",
+    "terraformls",
+    "tflint",
   },
   handlers = {
     lsp.default_setup,

@@ -2,8 +2,9 @@ require("nvim-treesitter.configs").setup({
 	ensure_installed = {
 		"javascript",
 		"typescript",
-    "terraform",
-    "hcl",
+		"go",
+		"terraform",
+		"hcl",
 		"rust",
 		"lua",
 		"vim",
@@ -11,8 +12,8 @@ require("nvim-treesitter.configs").setup({
 		"svelte",
 		"html",
 		"css",
-    "markdown",
-    "markdown_inline",
+		"markdown",
+		"markdown_inline",
 	},
 
 	sync_install = false,

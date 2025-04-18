@@ -58,30 +58,32 @@ require("lspconfig").ts_ls.setup({})
 
 require("mason").setup({})
 require("mason-lspconfig").setup({
-  ensure_installed = {
-    "lua_ls",
-    "rust_analyzer",
-    "svelte",
-    "ts_ls",
-    "tailwindcss",
-    "eslint",
-    "biome",
-    "bashls",
-    "jsonls",
-    "terraformls",
-    "tflint",
-  },
-  handlers = {
-    lsp.default_setup,
-  },
+	ensure_installed = {
+		"lua_ls",
+		"rust_analyzer",
+		"svelte",
+		"ts_ls",
+		"tailwindcss",
+		"eslint",
+		"biome",
+		"bashls",
+		"jsonls",
+		"terraformls",
+		"tflint",
+		"gopls",
+	},
+	handlers = {
+		lsp.default_setup,
+	},
 })
 require("mason-tool-installer").setup({
-  ensure_installed = {
-    "biome",
-    "eslint",
-    "prettier",
-    "stylua",
-    "shfmt",
-    "swiftlint",
-  }
+	ensure_installed = {
+		"biome",
+		"eslint",
+		"prettier",
+		"stylua",
+		"shfmt",
+		"swiftlint",
+		"gofumpt",
+	},
 })

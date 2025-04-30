@@ -229,14 +229,7 @@ local plugins = {
 	},
 	{
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
-	},
-	{
-		"y3owk1n/tailwind-autosort.nvim",
-		version = "*",
-		event = "VeryLazy",
-		dependencies = { "nvim-treesitter/nvim-treesitter" },
-		opts = {},
-	},
+	}
 }
 
 require("lazy").setup(plugins)

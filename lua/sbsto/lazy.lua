@@ -109,6 +109,7 @@ local plugins = {
 					html = select_js_formatter("html"),
 					yaml = select_js_formatter("yaml"),
 					json = select_js_formatter("json"),
+					jsonc = select_js_formatter("json"),
 					ocaml = {
 						require("formatter.filetypes.ocaml").ocamlformat,
 					},
@@ -229,7 +230,7 @@ local plugins = {
 	},
 	{
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
-	}
+	},
 }
 
 require("lazy").setup(plugins)

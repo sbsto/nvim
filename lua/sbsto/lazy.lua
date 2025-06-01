@@ -21,11 +21,11 @@ end
 
 local plugins = {
 	{
-		"shaunsingh/seoul256.nvim",
+		"rebelot/kanagawa.nvim",
 	},
 	{
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.4",
+		tag = "latest",
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
 	{
@@ -141,7 +141,7 @@ local plugins = {
 			vim.g.gitblame_display_virtual_text = 0
 			local git_blame = require("gitblame")
 
-			local theme = require("lualine.themes.seoul256")
+			local theme = require("lualine.themes.iceberg_dark")
 			theme.normal.b.bg = "none"
 			theme.normal.c.bg = "none"
 
@@ -230,6 +230,13 @@ local plugins = {
 	},
 	{
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
+	},
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+		},
 	},
 }
 

@@ -31,7 +31,6 @@ end
 
 local transparent_groups = {
 	"NormalFloat",
-	"FloatBorder",
 	"Pmenu",
 	"Terminal",
 	"EndOfBuffer",
@@ -55,3 +54,5 @@ local transparent_groups = {
 for _, group in ipairs(transparent_groups) do
 	set_transparent_bg(group)
 end
+
+vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#3e4451" })

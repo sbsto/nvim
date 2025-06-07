@@ -25,6 +25,8 @@ vim.opt.updatetime = 50
 
 vim.opt.fillchars = { eob = " " }
 
+vim.cmd.colorscheme("kanagawa")
+
 local function set_transparent_bg(group)
 	vim.api.nvim_set_hl(0, group, { bg = "none" })
 end
@@ -48,11 +50,17 @@ local transparent_groups = {
 	"StatusLine",
 	"StatusLineTermNC",
 	"StatusLineTerm",
-  "VertSplit",
+	"VertSplit",
+	"LineNr",
+	"LineNrAbove",
+	"LineNrBelow",
 }
 
 for _, group in ipairs(transparent_groups) do
 	set_transparent_bg(group)
 end
 
-vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#3e4451" })
+vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#727169" })
+vim.api.nvim_set_hl(0, "LineNr", { fg = "#727169", bg = "none" })
+vim.api.nvim_set_hl(0, "LineNrAbove", { fg = "#727169", bg = "none" })
+vim.api.nvim_set_hl(0, "LineNrBelow", { fg = "#727169", bg = "none" })

@@ -55,5 +55,5 @@ vim.keymap.set("v", "<leader>cb", ":GitBlameOpenFileURL<CR>", { noremap = true, 
 vim.keymap.set("n", "<leader>cc", ":GitBlameCopyFileURL<CR>", { noremap = true, silent = true })
 vim.keymap.set("v", "<leader>cc", ":GitBlameCopyFileURL<CR>", { noremap = true, silent = true })
 
--- vsplit 
+-- vsplit
 vim.keymap.set("n", "<leader>v", ":vsplit<CR>", { noremap = true, silent = true })

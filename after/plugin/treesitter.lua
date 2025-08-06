@@ -9,6 +9,7 @@ require("nvim-treesitter.configs").setup({
     "markdown",
     "markdown_inline",
     "ocaml",
+    "python",
     "rust",
     "svelte",
 		"terraform",

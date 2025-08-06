@@ -100,32 +100,31 @@ local plugins = {
 		config = function()
 			require("formatter").setup({
 				filetype = {
-					typescript = select_js_formatter("typescript"),
-					typescriptreact = select_js_formatter("typescriptreact"),
-
-					svelte = select_js_formatter("svelte"),
+          css = select_js_formatter("css"),
+          go = {
+            require("formatter.filetypes.go").gofumpt,
+          },
+          html = select_js_formatter("html"),
 					javascript = select_js_formatter("javascript"),
 					javascriptreact = select_js_formatter("javascriptreact"),
-					css = select_js_formatter("css"),
-					html = select_js_formatter("html"),
-					yaml = select_js_formatter("yaml"),
 					json = select_js_formatter("json"),
 					jsonc = select_js_formatter("json"),
+          lua = {
+            require("formatter.filetypes.lua").stylua,
+          },
 					ocaml = {
 						require("formatter.filetypes.ocaml").ocamlformat,
 					},
-					lua = {
-						require("formatter.filetypes.lua").stylua,
-					},
+          python = {
+            require("formatter.filetypes.python").ruff,
+          },
 					rust = {
 						require("formatter.filetypes.rust").rustfmt,
 					},
-					go = {
-						require("formatter.filetypes.go").gofumpt,
-					},
-					nix = {
-						require("formatter.filetypes.nix").nixpkgs_fmt,
-					},
+          svelte = select_js_formatter("svelte"),
+          typescript = select_js_formatter("typescript"),
+          typescriptreact = select_js_formatter("typescriptreact"),
+          yaml = select_js_formatter("yaml"),
 				},
 			})
 		end,

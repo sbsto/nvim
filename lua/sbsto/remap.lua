@@ -47,11 +47,11 @@ vim.keymap.set("n", "<leader>p", ":bp<CR>", { noremap = true, silent = true })
 -- open file explorer
 vim.keymap.set("n", "<leader>e", ":Oil<CR>", { noremap = true, silent = true })
 
--- copy commit URL
+-- open commit in browser
 vim.keymap.set("n", "<leader>cb", ":GitBlameOpenFileURL<CR>", { noremap = true, silent = true })
 vim.keymap.set("v", "<leader>cb", ":GitBlameOpenFileURL<CR>", { noremap = true, silent = true })
 
--- open commit in browser
+-- copy commit URL
 vim.keymap.set("n", "<leader>cc", ":GitBlameCopyFileURL<CR>", { noremap = true, silent = true })
 vim.keymap.set("v", "<leader>cc", ":GitBlameCopyFileURL<CR>", { noremap = true, silent = true })
 
